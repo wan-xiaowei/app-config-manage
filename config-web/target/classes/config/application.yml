@@ -1,0 +1,60 @@
+server:
+  context-path: /app-config-manage
+  port: 8091
+debug: false
+spring:
+  application:
+    name:  app-config-manage
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/com_me?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    formcontent:
+      putfilter:
+        enabled: true
+mybatis:
+  config-location: classpath:/config/mybatis-config.xml
+  mapper-locations:
+  - classpath:/mapper/*.xml
+  - classpath:/dao/*.xml
+
+jedis:
+  pool:
+    host : 192.168.1.186
+    password : yutian0626
+    port : 6379
+    timeOut : 10000
+    config :
+      maxTotal: 600
+      maxIdle: 300
+      maxWaitMillis : 10000
+      testOnBorrow : false
+      testOnReturn : true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:root@discovery:8761/eureka/,http://root:root@discovery2:8762/eureka
+  instance:
+    prefer-ip-address: true
+  healthcheck:
+        enabled: true
+ribbon:
+  eureka:
+    enabled: true
+#使用配置修改ribbon均衡策略
+internal-transfer:
+    ribbon:
+      NFLoadBalancerRuleClassName : com.netflix.loadbalancer.RandomRule
+      #listOfServers : localhost:8000,localhost:8001               离线设置负载均衡(改）
+feign:
+  compression:
+    request:
+      enabled : true
+      min-request-size: 2048                #请求的最小阈值
+      mime-types: text/xml,application/xml,aoolication/json
+logging:
+  level:
+     com.me.feign.FeignService: DEBUG #设置为debug,因为Logger.level支队debug做出响应

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: me            #对应config server配置文件的{application}
+  cloud:
+      uri : http://localhost:8080/
+      profile : dev    #对应config server配置文件的{profile}
+      label : master    #git仓库分支
+      bus:
+        trace:
+          enabled: true    # 开启cloud bus的跟踪
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest

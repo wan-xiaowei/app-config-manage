@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxw.mapper.LegalOperateLogMapper">
+  <resultMap id="BaseResultMap" type="com.wxw.model.LegalOperateLog">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="data_id" jdbcType="VARCHAR" property="dataId" />
+    <result column="log_type" jdbcType="TINYINT" property="logType" typeHandler="com.wxw.mybatis.typehandler.EnumCodeTypeHandler" />
+    <result column="operate_type" jdbcType="VARCHAR" property="operateType" />
+    <result column="operate_details" jdbcType="VARCHAR" property="operateDetails" />
+    <result column="operate_id" jdbcType="VARCHAR" property="operateId" />
+    <result column="operate_user_name" jdbcType="VARCHAR" property="operateUserName" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.logTypeCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler} and #{criterion.secondValue,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.logTypeCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler} and #{criterion.secondValue,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, data_id, log_type, operate_type, operate_details, operate_id, operate_user_name, 
+    operate_time
+  </sql>
+  <select id="selectByExample" parameterType="com.wxw.model.LegalOperateLogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from legal_operate_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from legal_operate_log
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from legal_operate_log
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wxw.model.LegalOperateLogExample">
+    delete from legal_operate_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wxw.model.LegalOperateLog">
+    insert into legal_operate_log (id, data_id, log_type, 
+      operate_type, operate_details, operate_id, 
+      operate_user_name, operate_time)
+    values (#{id,jdbcType=VARCHAR}, #{dataId,jdbcType=VARCHAR}, #{logType,jdbcType=TINYINT,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler}, 
+      #{operateType,jdbcType=VARCHAR}, #{operateDetails,jdbcType=VARCHAR}, #{operateId,jdbcType=VARCHAR}, 
+      #{operateUserName,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wxw.model.LegalOperateLog">
+    insert into legal_operate_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dataId != null">
+        data_id,
+      </if>
+      <if test="logType != null">
+        log_type,
+      </if>
+      <if test="operateType != null">
+        operate_type,
+      </if>
+      <if test="operateDetails != null">
+        operate_details,
+      </if>
+      <if test="operateId != null">
+        operate_id,
+      </if>
+      <if test="operateUserName != null">
+        operate_user_name,
+      </if>
+      <if test="operateTime != null">
+        operate_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="dataId != null">
+        #{dataId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        #{logType,jdbcType=TINYINT,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler},
+      </if>
+      <if test="operateType != null">
+        #{operateType,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDetails != null">
+        #{operateDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="operateId != null">
+        #{operateId,jdbcType=VARCHAR},
+      </if>
+      <if test="operateUserName != null">
+        #{operateUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wxw.model.LegalOperateLogExample" resultType="java.lang.Long">
+    select count(*) from legal_operate_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update legal_operate_log
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataId != null">
+        data_id = #{record.dataId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logType != null">
+        log_type = #{record.logType,jdbcType=TINYINT,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler},
+      </if>
+      <if test="record.operateType != null">
+        operate_type = #{record.operateType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operateDetails != null">
+        operate_details = #{record.operateDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operateId != null">
+        operate_id = #{record.operateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operateUserName != null">
+        operate_user_name = #{record.operateUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operateTime != null">
+        operate_time = #{record.operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update legal_operate_log
+    set id = #{record.id,jdbcType=VARCHAR},
+      data_id = #{record.dataId,jdbcType=VARCHAR},
+      log_type = #{record.logType,jdbcType=TINYINT,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler},
+      operate_type = #{record.operateType,jdbcType=VARCHAR},
+      operate_details = #{record.operateDetails,jdbcType=VARCHAR},
+      operate_id = #{record.operateId,jdbcType=VARCHAR},
+      operate_user_name = #{record.operateUserName,jdbcType=VARCHAR},
+      operate_time = #{record.operateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wxw.model.LegalOperateLog">
+    update legal_operate_log
+    <set>
+      <if test="dataId != null">
+        data_id = #{dataId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        log_type = #{logType,jdbcType=TINYINT,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler},
+      </if>
+      <if test="operateType != null">
+        operate_type = #{operateType,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDetails != null">
+        operate_details = #{operateDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="operateId != null">
+        operate_id = #{operateId,jdbcType=VARCHAR},
+      </if>
+      <if test="operateUserName != null">
+        operate_user_name = #{operateUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wxw.model.LegalOperateLog">
+    update legal_operate_log
+    set data_id = #{dataId,jdbcType=VARCHAR},
+      log_type = #{logType,jdbcType=TINYINT,typeHandler=com.wxw.mybatis.typehandler.EnumCodeTypeHandler},
+      operate_type = #{operateType,jdbcType=VARCHAR},
+      operate_details = #{operateDetails,jdbcType=VARCHAR},
+      operate_id = #{operateId,jdbcType=VARCHAR},
+      operate_user_name = #{operateUserName,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.wxw.model.LegalOperateLogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from legal_operate_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <properties resource="mbg.properties" />
+
+    <classPathEntry location="${mysql.connector}" />
+
+    <context id="MyBatis3" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <property name="javaFileEncoding" value="UTF-8" />
+
+        <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+        <commentGenerator type="generator.CustomCommentGenerator">
+            <property name="suppressChineseAllComments" value="false" />
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" />
+
+        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${projectName}" />
+
+        <sqlMapGenerator targetPackage="${mapperXmlPackage}" targetProject="${projectName}" />
+
+        <javaClientGenerator targetPackage="${mapperPackage}" targetProject="${projectName}" type="XMLMAPPER">
+
+        </javaClientGenerator>
+
+       <!-- <table tableName="legal_operate_log" domainObjectName="LegalOperateLog">
+            <columnOverride column="log_type" property="logType" javaType="com.wxw.enums.LogType" typeHandler="com.wxw.mybatis.typehandler.EnumCodeTypeHandler"/>
+        </table>-->
+
+    </context>
+</generatorConfiguration>
