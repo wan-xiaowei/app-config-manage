@@ -31,9 +31,9 @@
 
         </javaClientGenerator>
 
-       <!-- <table tableName="legal_operate_log" domainObjectName="LegalOperateLog">
+       <table tableName="legal_operate_log" domainObjectName="LegalOperateLog">
             <columnOverride column="log_type" property="logType" javaType="com.wxw.enums.LogType" typeHandler="com.wxw.mybatis.typehandler.EnumCodeTypeHandler"/>
-        </table>-->
+        </table>
 
     </context>
 </generatorConfiguration>

@@ -16,7 +16,7 @@ public class GeneratorSqlmap {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         //指定 逆向工程配置文件
-        File configFile = new File(this.getClass().getResource("/").getPath(),"./generatorConfig.xml");
+        File configFile = new File(this.getClass().getResource("/").getPath(),"/generatorConfig.xml");
         //File configFile = new File("E:/git-work/internal-transfer/internal-transfer-mock/src/test/resources/generatorConfig.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);

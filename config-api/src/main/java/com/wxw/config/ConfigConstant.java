@@ -6,9 +6,7 @@ public abstract class ConfigConstant {
 
     public static final String MAPPER_BASE_PACKAGES = "com.wxw.mapper";
 
-    public static final String CONTROLLER_BASE_PACKAGES = "com.wxw.controller";
-
-    public static final String DAO_BASE_PACKAGES = "com.wxw.dao";
+    public static final String CONTROLLER_BASE_PACKAGES = "com.wxw.admin.controller";
 
     public static final String DTO_BASE_PACKAGES = "com.wxw.dto.";
 
@@ -30,9 +28,9 @@ public abstract class ConfigConstant {
 
     public static final String FILEDOMAIN = "https://file.sellercube.com/";
 
-    public static final  String ROUTEKEY = "cia-j";
+    public static final  String ROUTEKEY = "app-config-manage";
 
-    public static final  String SYSTEMNAME = "合规系统";
+    public static final  String SYSTEMNAME = "配置项管理";
 
     public static final String SPLIITSTR = ";;";
 

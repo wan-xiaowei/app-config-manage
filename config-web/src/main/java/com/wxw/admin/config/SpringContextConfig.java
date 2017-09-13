@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.concurrent.Executor;
 
 @Configuration
-@MapperScan(basePackages = {ConfigConstant.MAPPER_BASE_PACKAGES, ConfigConstant.DAO_BASE_PACKAGES})
+@MapperScan(basePackages = {ConfigConstant.MAPPER_BASE_PACKAGES})
 @ComponentScan(basePackages = {ConfigConstant.SCAN_BASE_PACKAGES}, excludeFilters = {
         @Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class),
         @Filter(type = FilterType.ANNOTATION, value = Controller.class),

@@ -18,7 +18,7 @@ import java.util.Map;
  */
 //url = "/internal-transfer/transfer-record/conditionTransferInfoData?pageSize=2&pageIndex=1"
     //可指定属性fallbackFactory = FeignServiceFactory.class   ,fallback = FeignServiceFallBack.class
-@FeignClient( name = "internal-transfer",configuration = FeignConfiguration.class,fallback = FeignServiceFallBack.class)
+@FeignClient( name = "internal-transfer",configuration = FeignConfiguration.class)
 public interface FeignService {
      @RequestMapping(value="/getAA",method=RequestMethod.GET)
      Object getAA();

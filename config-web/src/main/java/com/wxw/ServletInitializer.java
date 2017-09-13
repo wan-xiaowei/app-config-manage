@@ -1,4 +1,4 @@
-package com.wxw.admin;
+package com.wxw;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
