@@ -2,11 +2,12 @@ package com.wxw.mapper;
 
 import com.wxw.model.LegalOperateLog;
 import com.wxw.model.LegalOperateLogExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
-
+@Mapper
 public interface LegalOperateLogMapper {
     long countByExample(LegalOperateLogExample example);
 

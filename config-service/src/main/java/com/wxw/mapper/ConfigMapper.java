@@ -4,11 +4,12 @@ package com.wxw.mapper;
 import com.wxw.dto.ConfigNameDto;
 import com.wxw.model.Config;
 import com.wxw.model.ConfigExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
-
+@Mapper
 public interface ConfigMapper {
     long countByExample(ConfigExample example);
 

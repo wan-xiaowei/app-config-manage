@@ -3,11 +3,12 @@ package com.wxw.mapper;
 
 import com.wxw.model.ConfigDetail;
 import com.wxw.model.ConfigDetailExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
-
+@Mapper
 public interface ConfigDetailMapper {
     long countByExample(ConfigDetailExample example);
 
