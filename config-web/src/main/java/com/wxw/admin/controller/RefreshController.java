@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RefreshScope   //手动刷新配置(post请求:localhost:8090/cia-j/refresh)
 public class RefreshController {
-    @Value("${profile}")
+   /* @Value("${profile}")*/
     private String profile;
 
     @GetMapping("/profile")

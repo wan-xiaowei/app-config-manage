@@ -1,7 +1,6 @@
 package com.wxw.admin.config;
 
-import com.atomikos.icatch.jta.UserTransactionImp;
-import com.atomikos.icatch.jta.UserTransactionManager;
+
 import com.wxw.config.ConfigConstant;
 import org.apache.commons.lang3.StringUtils;
 import org.mybatis.spring.annotation.MapperScan;
@@ -9,7 +8,6 @@ import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.*;
 import org.springframework.context.annotation.ComponentScan.Filter;
@@ -22,7 +20,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
-import org.springframework.transaction.jta.JtaTransactionManager;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -31,8 +28,6 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 import javax.sql.DataSource;
-import javax.transaction.TransactionManager;
-import javax.transaction.UserTransaction;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -48,7 +43,7 @@ import java.util.concurrent.Executor;
 @EnableAspectJAutoProxy
 @EnableAsync
 @EnableScheduling
-@ConfigurationProperties(prefix="jedis")
+//@ConfigurationProperties
 public class SpringContextConfig implements AsyncConfigurer, TransactionManagementConfigurer {
     private static Map<String, JedisPool> maps = new HashMap<String, JedisPool>();
 
@@ -106,7 +101,7 @@ public class SpringContextConfig implements AsyncConfigurer, TransactionManageme
      * MyBatis自动参与到spring事务管理中，无需额外配置，只要org.mybatis.spring.SqlSessionFactoryBean引用的数据源与DataSourceTransactionManager引用的数据源一致即可，否则事务管理会不起作用。
      * @return
      */
-    @Bean(name = "userTransaction")
+   /* @Bean(name = "userTransaction")
     public UserTransaction userTransaction() throws Throwable {
         UserTransactionImp userTransactionImp = new UserTransactionImp();
         userTransactionImp.setTransactionTimeout(10000);
@@ -125,7 +120,7 @@ public class SpringContextConfig implements AsyncConfigurer, TransactionManageme
         UserTransaction userTransaction = userTransaction();
         JtaTransactionManager manager = new JtaTransactionManager(userTransaction,atomikosTransactionManager());
         return manager;
-    }
+    }*/
 
     @Bean(name = "transactionManager")
     @Override

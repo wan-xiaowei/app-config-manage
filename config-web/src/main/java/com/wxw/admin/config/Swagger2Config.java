@@ -11,9 +11,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * Created by heweiming on 2017/6/8.
- */
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
@@ -24,7 +21,7 @@ public class Swagger2Config {
                 .ignoredParameterTypes(LegalOperateLogPageSearchForm.class)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.wxw"))
+                .apis(RequestHandlerSelectors.basePackage("com.wxw.admin"))
                 .paths(PathSelectors.any())
                 .build();
     }
